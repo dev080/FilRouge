@@ -1,0 +1,5 @@
+C:\Users\stagiaire\Dropbox\FilRouge\Avec-Modif\FilRouge\Vérif_Email\bin\Debug\Vérif_Email.exe
+C:\Users\stagiaire\Dropbox\FilRouge\Avec-Modif\FilRouge\Vérif_Email\bin\Debug\Vérif_Email.pdb
+C:\Users\stagiaire\Dropbox\FilRouge\Avec-Modif\FilRouge\Vérif_Email\obj\Debug\Vérif_Email.csprojResolveAssemblyReference.cache
+C:\Users\stagiaire\Dropbox\FilRouge\Avec-Modif\FilRouge\Vérif_Email\obj\Debug\Vérif_Email.exe
+C:\Users\stagiaire\Dropbox\FilRouge\Avec-Modif\FilRouge\Vérif_Email\obj\Debug\Vérif_Email.pdb
