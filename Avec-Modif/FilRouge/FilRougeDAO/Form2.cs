@@ -20,12 +20,12 @@ namespace FilRougeDAO
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+
 
             try
             {
-            SqlConnection connect = new SqlConnection("server=(local); integrated security = false;user id="+textBox1.Text+";password="+textBox2.Text+"; database = master");
-            connect.Open();
+                SqlConnection connect = new SqlConnection("server=(local); integrated security = false;user id=" + textBox1.Text + ";password=" + textBox2.Text + "; database = master");
+                connect.Open();
 
                 MessageBox.Show("Réussi");
 
@@ -34,35 +34,37 @@ namespace FilRougeDAO
 
                 connect.Close();
             }
-            catch(InvalidOperationException el)
+            catch (InvalidOperationException el)
             {
                 MessageBox.Show("exception 1 " + el.Message);
 
             }
-            catch(SqlException el)
+            catch (SqlException)
             {
-                MessageBox.Show("exception 2 " + el.Message);
+                // MessageBox.Show("exception 2 " + el.Message);
+                //je regarde dans la base si l'utilisateur est connu.
+                SqlConnection connect = new SqlConnection("server=(local); integrated security = true; database = master");
+                connect.Open();
 
+                SqlCommand requete = new SqlCommand("SELECT * FROM sys.server_principals where name = '" + textBox1.Text + "'", connect);
+                SqlDataReader resultat = requete.ExecuteReader();
+
+                if (resultat.Read())
+                {
+                    MessageBox.Show("utilisateur connu");
+
+                }
+                else
+                {
+                    MessageBox.Show("utilisateur pas connu");
+                }
             }
-            
-            
-            //je regarde dans la base si l'utilisateur est connu.
 
-            /*
-            SqlCommand requete = new SqlCommand("SELECT * FROM sys.server_principals where name = '" +textBox1.Text+"'", connect);
-            SqlDataReader resultat = requete.ExecuteReader();
 
-            if (resultat.Read())
-            {
-                MessageBox.Show("utilisateur connu");
-                
-            }else
-            {
-                MessageBox.Show("utilisateur pas connu");
-            }
-            */
 
-            
+
+
+
         }
     }
 }
