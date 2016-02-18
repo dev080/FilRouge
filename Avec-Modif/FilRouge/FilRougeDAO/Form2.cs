@@ -27,7 +27,13 @@ namespace FilRougeDAO
                 SqlConnection connect = new SqlConnection("server=(local); integrated security = false;user id=" + textBox1.Text + ";password=" + textBox2.Text + "; database = master");
                 connect.Open();
 
-                MessageBox.Show("Réussi");
+                Form5 r = new Form5();
+                Hide();
+                r.ShowDialog();
+                Show();
+
+
+
 
 
 
@@ -51,13 +57,14 @@ namespace FilRougeDAO
 
                 if (resultat.Read())
                 {
-                    MessageBox.Show("utilisateur connu");
+                    MessageBox.Show("utilisateur connu, erreur sur le mot de pass");
 
                 }
                 else
                 {
                     MessageBox.Show("utilisateur pas connu");
                 }
+                connect.Close();
             }
 
 

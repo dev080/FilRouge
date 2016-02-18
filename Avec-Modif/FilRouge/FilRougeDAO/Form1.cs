@@ -18,13 +18,27 @@ namespace FilRougeDAO
 
         private void button1_Click(object sender, EventArgs e)
         {
-
-            
             Form3 f3 = new Form3();
-            f3.Show();
+
+            Hide();
+
+            f3.ShowDialog();
+
+            Show();
+
+
             
             
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Form2 g = new Form2();
+
+            Hide();
+            g.ShowDialog();
+            Show();
         }
     }
 }
