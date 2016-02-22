@@ -147,7 +147,10 @@ namespace FilRougeDAO
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            Hide();
+            Form4 z = new Form4();
+            z.ShowDialog();
+            Show();
         }
     }
 }
