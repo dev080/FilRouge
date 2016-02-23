@@ -11,3 +11,4 @@ C:\Users\stagiaire\Dropbox\FilRouge\Avec-Modif\FilRouge\FilRougeDAO\obj\Debug\Fi
 C:\Users\stagiaire\Dropbox\FilRouge\Avec-Modif\FilRouge\FilRougeDAO\obj\Debug\FilRougeDAO.exe
 C:\Users\stagiaire\Dropbox\FilRouge\Avec-Modif\FilRouge\FilRougeDAO\obj\Debug\FilRougeDAO.pdb
 C:\Users\stagiaire\Dropbox\FilRouge\Avec-Modif\FilRouge\FilRougeDAO\obj\Debug\FilRougeDAO.Form4.resources
+C:\Users\stagiaire\Dropbox\FilRouge\Avec-Modif\FilRouge\FilRougeDAO\obj\Debug\FilRougeDAO.Form6.resources

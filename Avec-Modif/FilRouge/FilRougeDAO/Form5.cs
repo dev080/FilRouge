@@ -76,7 +76,10 @@ namespace FilRougeDAO
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            Hide();
+            Form6 z = new Form6();
+            z.ShowDialog();
+            Show();
         }
 
         private void Form3_Load(object sender, EventArgs e)
