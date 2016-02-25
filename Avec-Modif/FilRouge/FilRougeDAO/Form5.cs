@@ -20,46 +20,47 @@ namespace FilRougeDAO
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listBox2.SelectedItem != null)
+            SqlCommand requete;
+            SqlDataReader resultat = null;
+
+            if (listBox1.SelectedItem != null)
             {
                 // met dans label8 la valeur de la réduction du client
                 SqlConnection connect = new SqlConnection("server=(local); integrated security = true; database = FilRouge_essai_modif");
                 connect.Open();
 
-                if (listBox2.SelectedItem.GetType() == typeof(USState))
+                if (listBox1.SelectedItem.GetType() == typeof(USState))
                 {
-                    USState d = (USState)listBox2.SelectedItem;
+                    USState d = (USState)listBox1.SelectedItem;
 
-                    MessageBox.Show("valeur " + d.LongName + " valeur2");
+                    //  d = listBox1.SelectedValue;
+                    //  MessageBox.Show(listBox1.SelectedValue.ToString());
+
+
+                    requete = new SqlCommand("select CoeffClient from client where IdClient=" + d.ShortName, connect);
+
+                    try { resultat = requete.ExecuteReader(); }
+                    catch (Exception r)
+                    { MessageBox.Show(r.Message); }
+
+                    while (resultat.Read())
+                    {
+                        label8.Text = (resultat["CoeffClient"].ToString());
+
+                    }
+                    resultat.Close();
+
+
+                    //place l'indice du trackbar
+                    requete = new SqlCommand("select Reduction from Client where Idclient=" + d.ShortName + "", connect);
+                    resultat = requete.ExecuteReader();
+                    while (resultat.Read())
+                    {
+                        trackBar1.Value = Int32.Parse((resultat["Reduction"].ToString()));
+
+                    }
+                    resultat.Close();
                 }
-
-
-
-
-                SqlCommand requete = new SqlCommand("select CoeffClient from client where IdClient=" + listBox1.SelectedValue, connect);
-                SqlDataReader resultat = null;
-                try { resultat = requete.ExecuteReader(); }
-                catch (Exception r)
-                { MessageBox.Show(r.Message); }
-
-                while (resultat.Read())
-                {
-                    label8.Text = (resultat["CoeffClient"].ToString());
-
-                }
-                resultat.Close();
-
-
-                //place l'indice du trackbar
-                requete = new SqlCommand("select Reduction from Client where Idclient=" + listBox1.SelectedValue + "", connect);
-                resultat = requete.ExecuteReader();
-                while (resultat.Read())
-                {
-                    trackBar1.Value = Int32.Parse((resultat["Reduction"].ToString()));
-
-                }
-                resultat.Close();
-
                 connect.Close();
 
 
@@ -69,19 +70,54 @@ namespace FilRougeDAO
 
         private void button2_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(listBox1.SelectedValue + " " + listBox1.SelectedItem.ToString());
+
+            //USState d = (USState)listBox1.SelectedValue;
+            int d = Int32.Parse(listBox1.SelectedValue.ToString());
+
+         //   int d2 = Int32.Parse(d.ShortName);
 
 
-            //SqlConnection connect = new SqlConnection("server=(local); integrated security = true; database = FilRouge_essai_modif");
-            //connect.Open();
-
-            //SqlCommand requete = new SqlCommand("", connect);
-            //requete.Parameters.AddWithValue();
+            //USState d2 = (USState)listBox1.SelectedValue;
 
 
-            //requete.ExecuteNonQuery();
+         //   MessageBox.Show(" index client = " + listBox1.SelectedValue + " index produit " + listBox2.SelectedValue);
 
-            //connect.Close();
+
+            SqlConnection connect = new SqlConnection("server=(local); integrated security = true; database = FilRouge_essai_modif");
+
+            connect.Open();
+
+            SqlCommand requete = new SqlCommand(@"INSERT INTO commande (EtatCommande,DateCommande,MontantCommande,DatePaiement,Idclient,IdFacture )
+VALUES('saisie', @date, @montant, null, @id, null) ", connect);
+
+            DateTime d3= DateTime.Now;
+
+            requete.Parameters.AddWithValue("@date",d3);
+            requete.Parameters.AddWithValue("@montant",Decimal.Parse(label6.Text));
+            requete.Parameters.AddWithValue("@id",d);
+
+            requete.ExecuteNonQuery();
+
+            SqlCommand requete2 = new SqlCommand(@"select max(idcommande) from commande", connect);
+
+            Int32 position=(Int32)(requete2.ExecuteScalar());
+
+            MessageBox.Show(" dernier index vaut: "+position);
+
+
+            SqlCommand requete3 = new SqlCommand(@"INSERT INTO composer1 (QuantiteProd,IdProduit,IdCommande,)
+VALUES(@qte, @idp,@idc)", connect);
+
+            int d2= Int32.Parse(listBox2.SelectedValue.ToString());
+
+            requete.Parameters.AddWithValue("@qte", Int32.Parse(textBox1.Text));
+            requete.Parameters.AddWithValue("@idp", d2);
+            requete.Parameters.AddWithValue("@idc", position);
+
+
+
+            connect.Close();
+
         }
 
         private void trackBar1_Scroll(object sender, EventArgs e)
@@ -124,10 +160,6 @@ namespace FilRougeDAO
 
             }
 
-
-
-
-
             listBox1.DataSource = USStates;
             listBox1.DisplayMember = "LongName";
             listBox1.ValueMember = "ShortName";
@@ -141,6 +173,7 @@ namespace FilRougeDAO
             //affiche la liste déroulante des instruments
             SqlCommand requete2 = new SqlCommand("select * from produit", connect);
             resultat = requete2.ExecuteReader();
+
             ArrayList USStates2 = new ArrayList();
 
             while (resultat.Read())
@@ -265,32 +298,27 @@ namespace FilRougeDAO
 
         private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //    SqlConnection connect = new SqlConnection("server=(local); integrated security = true; database = FilRouge_essai_modif");
-            //    connect.Open();
-            //    SqlCommand requete = new SqlCommand("select PrixHT_Prod from produit where IdProduit ='" + listBox2.SelectedValue + "'", connect);
-            //    SqlDataReader resultat = requete.ExecuteReader();
-            //    if (resultat.Read())
-            //    {
-            //        textBox2.Text = resultat["prixHT_Prod"].ToString();
+            SqlConnection connect = new SqlConnection("server=(local); integrated security = true; database = FilRouge_essai_modif");
+            connect.Open();
+            USState test = (USState)listBox2.SelectedItem;
 
 
-            //    }
-            //    resultat.Close();
 
-            //    connect.Close();
-            try
+            SqlCommand requete = new SqlCommand("select PrixHT_Prod from produit where IdProduit =" + test.ShortName, connect);
+            SqlDataReader resultat = requete.ExecuteReader();
+            if (resultat.Read())
             {
-                USState test = (USState)listBox2.SelectedItem;
+                textBox2.Text = resultat["prixHT_Prod"].ToString();
 
-
-                Console.WriteLine(test.LongName);
-                Console.WriteLine(test.ShortName);
 
             }
-            catch (Exception er)
-            {
+            resultat.Close();
 
-            }
+            connect.Close();
+
+
+
         }
+
     }
 }
