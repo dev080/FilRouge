@@ -28,16 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.treeView1 = new System.Windows.Forms.TreeView();
             this.treeView2 = new System.Windows.Forms.TreeView();
+            this.treeView1 = new System.Windows.Forms.TreeView();
             this.SuspendLayout();
-            // 
-            // treeView1
-            // 
-            this.treeView1.Location = new System.Drawing.Point(154, 57);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(288, 415);
-            this.treeView1.TabIndex = 0;
             // 
             // treeView2
             // 
@@ -45,6 +38,13 @@
             this.treeView2.Name = "treeView2";
             this.treeView2.Size = new System.Drawing.Size(288, 415);
             this.treeView2.TabIndex = 1;
+            // 
+            // treeView1
+            // 
+            this.treeView1.Location = new System.Drawing.Point(154, 57);
+            this.treeView1.Name = "treeView1";
+            this.treeView1.Size = new System.Drawing.Size(288, 415);
+            this.treeView1.TabIndex = 0;
             // 
             // Form7
             // 
@@ -61,8 +61,7 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.TreeView treeView2;
+        private System.Windows.Forms.TreeView treeView1;
     }
 }
