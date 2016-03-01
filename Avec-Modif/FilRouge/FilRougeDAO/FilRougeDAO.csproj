@@ -63,6 +63,8 @@
   <ItemGroup>
     <Compile Include="DAO\Client.cs" />
     <Compile Include="DAO\ClientDAO.cs" />
+    <Compile Include="DAO\Commande.cs" />
+    <Compile Include="DAO\CommandeDAO.cs" />
     <Compile Include="DAO\Commercial.cs" />
     <Compile Include="DAO\CommercialDAO.cs" />
     <Compile Include="DAO\Instrument.cs" />
@@ -107,11 +109,23 @@
     <Compile Include="Form6.Designer.cs">
       <DependentUpon>Form6.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form7-enDAO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form7-enDAO.Designer.cs">
+      <DependentUpon>Form7-enDAO.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form7.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form7.Designer.cs">
       <DependentUpon>Form7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form8.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form8.Designer.cs">
+      <DependentUpon>Form8.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -134,8 +148,14 @@
     <EmbeddedResource Include="Form6.resx">
       <DependentUpon>Form6.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form7-enDAO.resx">
+      <DependentUpon>Form7-enDAO.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form7.resx">
       <DependentUpon>Form7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form8.resx">
+      <DependentUpon>Form8.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

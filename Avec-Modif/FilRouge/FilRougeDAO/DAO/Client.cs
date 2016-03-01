@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FilRougeDAO.DAO
 {
-    class Client
+    public class Client
     {
         public int IdClient { get; set; }
         public String civiliteclient { get; set; }

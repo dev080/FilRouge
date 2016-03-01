@@ -4,15 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
+
 namespace Vérif_Email
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
             /*
             Méthode du regex
-*/
 
             Regex rg = new Regex(@"^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9]+)*$"); //a valider
             Console.WriteLine("Entrer votre adresse");
@@ -25,37 +25,38 @@ namespace Vérif_Email
                 Console.WriteLine("pas ok");
 
             }
+*/
 
 
 
 
 
 
-            ///*Méthode substring*/
-            //bool result = false;
+            /*Méthode substring*/
+            bool result = false;
 
-            //Console.WriteLine("Quelle est votre adresse email?");
+            Console.WriteLine("Quelle est votre adresse email?");
 
-            //String reponse = Console.ReadLine();
-            //Console.WriteLine();
-            
-            //result=Verification(reponse);
+            String reponse = Console.ReadLine();
+            Console.WriteLine();
 
-            //if (result)
-            //{
-            //    int position = reponse.IndexOf("@");
-            //    //Console.WriteLine("@ en position" + position);
+            result = Verification(reponse);
 
-            //    String newreponse = reponse.Substring(position+1, (reponse.Length-position-1));
+            if (result)
+            {
+                int position = reponse.IndexOf("@");
+                //Console.WriteLine("@ en position" + position);
 
-            //    Domaine(newreponse);
-            //    //Console.WriteLine(newreponse);
-            //   // Console.WriteLine();
+                String newreponse = reponse.Substring(position + 1, (reponse.Length - position - 1));
 
-
+                Domaine(newreponse);
+                //Console.WriteLine(newreponse);
+                // Console.WriteLine();
 
 
-            //}
+
+
+            }
 
             Console.ReadKey();
 
@@ -101,19 +102,11 @@ namespace Vérif_Email
                 }else
                 {
                     Console.WriteLine("Tout est correcte");
-
                 }
-
-
-
             }
-
-
-
-
         }
 
-        static Boolean Verification(string carac)
+       public static Boolean Verification(string carac)
         {
             int avant = 0;
             int i=0, j = 0, presenc=0;

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
+
 namespace WindowsFormsApplication1
 {
     public partial class Form4: Form
@@ -82,6 +83,11 @@ namespace WindowsFormsApplication1
         //            "connectionString variable with a connection string that is " +
         //            "valid for your system.");
         //    }
+        }
+
+        private void Form4_Load(object sender, EventArgs e)
+        {
+            
         }
     }
 }
