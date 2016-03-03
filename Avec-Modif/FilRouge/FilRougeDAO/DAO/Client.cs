@@ -8,6 +8,7 @@ namespace FilRougeDAO.DAO
 {
     public class Client
     {
+
         public int IdClient { get; set; }
         public String civiliteclient { get; set; }
         public String Nomclient { get; set; }
