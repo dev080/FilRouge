@@ -38,5 +38,21 @@ namespace FilRougeDAO.DAO
             _connect.Close();
             return resultat;
         }
+
+        public void update(int indice, string table)
+        {
+            _connect.Open();
+
+            SqlCommand requete2 = new SqlCommand("update SousRubrique set NomSousRubrique=@table where IdSousRubrique=@indice", _connect);
+            requete2.Parameters.AddWithValue("@indice", indice);
+            requete2.Parameters.AddWithValue("@table", table);
+
+            requete2.ExecuteNonQuery();
+
+            _connect.Close();
+
+
+
+        }
     }
 }
